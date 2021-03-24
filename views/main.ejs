@@ -8,21 +8,7 @@
     <title>Index</title>
 </head>
 <body>
-<nav class="navbar navbar-expand-md navbar-dark bg-dark">
-    <a href="/" class="navbar-brand">SpooterMech</a>
-    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarCollapse">
-        <div class="navbar-nav ml-auto">
-            <div class="navbar-nav">
-                <span class="nav-item navbar-text">Logged in as <%= user.username %> <span class="d-none d-md-inline">|</span> </span>
-                <a href="/logout" class="nav-item nav-link">Logout</a>
-            </div>
-        </div>
-    </div>
-</nav>
+<%- include('_navbarLogged') %>
 <div class="container text-center pt-5">
     <h1>Your role: <%= roles[user.role] %></h1>
 </div>

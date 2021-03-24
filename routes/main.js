@@ -8,6 +8,9 @@ const page = require('../page/page');
 router.route('/')
       .get(page.mainPage);
 
+router.route('/profile')
+      .get(page.profile);
+
 router.route('/login')
       .get(auth.login)
       .post(passport.authenticate("local", {
