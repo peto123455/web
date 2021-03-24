@@ -4,11 +4,13 @@ const bcrypt = require('bcrypt');
 
 
 exports.login = (req, res) => {
-    res.render('login');
+    if(res.locals.user) res.redirect('/');
+    else res.render('login');
 }
 
 exports.register = (req, res) => {
-    res.render('register');
+    if(res.locals.user) res.redirect('/');
+    else res.render('register');
 }
 
 exports.registerPost = async (req, res) => {
@@ -23,4 +25,11 @@ exports.registerPost = async (req, res) => {
     })
 
     res.redirect('/login');
+}
+
+exports.logout = (req, res) => {
+    req.session.destroy(function (err) {
+        if (err) console.log(err);
+        res.redirect('/');
+    });
 }

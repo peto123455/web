@@ -6,7 +6,11 @@ const UserSchema = new mongoose.Schema(
         type: String,
         unique: true
     },
-    password: String
+    password: String,
+    role: {
+        type: Number,
+        default: 1
+    }
   }
 );
 

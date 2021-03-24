@@ -41,6 +41,7 @@ app.use(passport.session());
 app.use(express.json());
 app.use(express.urlencoded());
 app.use(flash());
+app.use(require('./globaluser'));
 app.use('/', require('./routes/main'));
 
 app.listen(80, () => {
