@@ -9,7 +9,11 @@ router.route('/login')
       .post(passport.authenticate("local", {
             failureRedirect: "/",
             failureFlash: true}), (req, res) => {
-                res.send("test");
+                res.send("Logged In");
             });
+
+router.route('/register')
+      .get(auth.register)
+      .post(auth.registerPost);
 
 module.exports = router;
