@@ -38,6 +38,11 @@ app.use(sessionMiddleware);
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.use(function (err, req, res, next) {
+    console.error(err.stack);
+    res.status(500).send('Something went wrong you retard.');
+});
+
 app.use(express.json());
 app.use(express.urlencoded());
 app.use(flash());

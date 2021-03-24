@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include('_links') %>
+    <title>Index</title>
+</head>
+<body>
+<%- include('_navbarLogged') %>
+
+<table class="container table mt-5">
+	<thead>
+		<tr>
+			<th scope="col">#</th>
+			<th scope="col">Username</th>
+			<th scope="col">Action</th>
+		</tr>
+	</thead>
+	<tbody>
+	<% users.forEach( (user, i) => { %>
+		<tr>
+			<th class="align-middle" scope="row"><%= user._id %></th>
+			<td class="align-middle"><%= user.username %></td>
+			<td><a href="/admin/useredit?id=<%= user._id %>" class="btn btn-dark text-light">Edit</a></td>
+		</tr>
+	<% }); %>
+	</tbody>
+</table>
+</body>
+</html>

@@ -2,8 +2,10 @@ const express = require('express');
 const router = express.Router();
 
 const passport = require('passport')
+
 const auth = require('../page/auth');
 const page = require('../page/page');
+const admin = require('../page/admin');
 
 router.route('/')
       .get(page.mainPage);
@@ -26,5 +28,10 @@ router.route('/register')
 router.route('/logout')
       .get(auth.logout);
 
+router.route('/admin')
+      .get(admin.dashboard);
+
+router.route('/admin/users')
+      .get(admin.users);
 
 module.exports = router;

@@ -5,6 +5,12 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav">
+            <a href="/" class="nav-item nav-link">Home</a>
+            <% if(user.role == 3) { %>
+            <a href="/admin" class="nav-item nav-link">Admin Panel</a>
+            <% } %>
+        </div>
         <div class="navbar-nav ml-auto">
             <div class="navbar-nav">
                 <span class="nav-item navbar-text">Logged in as <a href="/profile" style="text-decoration: none;"><%= user.username %></a> <span class="d-none d-md-inline">|</span> </span>
