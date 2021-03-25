@@ -23,7 +23,10 @@
 		<tr>
 			<th class="align-middle" scope="row"><%= user._id %></th>
 			<td class="align-middle"><%= user.username %></td>
-			<td><a href="/admin/useredit?id=<%= user._id %>" class="btn btn-dark text-light">Edit</a></td>
+			<td class="align-right text-center" style="width:  20%">
+			  <a href="/admin/useredit?id=<%= user._id %>" class="btn btn-dark text-light">Edit</a>
+			  <a href="/admin/userdelete?id=<%= user._id %>" class="btn btn-danger text-light">Remove</a>
+			</td>
 		</tr>
 	<% }); %>
 	</tbody>
