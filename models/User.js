@@ -10,6 +10,10 @@ const UserSchema = new mongoose.Schema(
     role: {
         type: Number,
         default: 1
+    },
+    avatar: {
+        type: Number,
+        default: 7
     }
   }
 );

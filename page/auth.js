@@ -15,17 +15,19 @@ exports.register = (req, res) => {
 
 exports.registerPost = async (req, res, next) => {
     try {
-        if(await User.findOne({ username: req.body.username })) return;
-        else if(req.body.password != req.body.passwordRepeat) return;
-
-        //const user = new User({ "username": req.body.username, "password": bcrypt.hashSync(req.body.password, 5) });
-
-        await bcrypt.hash(req.body.password, 5, async (err, hash) => {
+        if(await User.findOne({ username: req.body.username })) 
+            req.flash("error", "User already exists !");
+        else if(req.body.password != req.body.passwordRepeat) 
+            req.flash("error", "Passwords don't match !");
+        else 
+        {
+            const hash = await bcrypt.hash(req.body.password, 5);
             const user = new User({ "username": req.body.username, "password": hash });
             await user.save();
-        })
+            req.flash("success", "Account successfully created ! You can now <a href=\"/login\">log in<\/a>");
+        }
 
-        res.redirect('/login');
+        res.redirect('/register');
     } catch(e) {
         next(e);
     }

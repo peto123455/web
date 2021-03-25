@@ -5,11 +5,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <%- include('_links') %>
-    <title>Login</title>
+    <title>SPM - Login</title>
 </head>
 <body>
 <%- include('_navbar') %>
-<div class="container w-25 pt-5">
+<div class="container pt-5" style="max-width: 500px;">
+    <% if(message.error){ %>
+        <div class="alert alert-danger" role="alert">
+        <% message.error.forEach(error => { %>
+            <%= error %>
+        <% }); %>
+        </div>
+    <% } %>
+    <% if(message.success){ %>
+        <div class="alert alert-success" role="alert">
+        <% message.success.forEach(success => { %>
+            <%= success %>
+        <% }); %>
+        </div>
+    <% } %>
     <h1>Login</h1>
     <form action="" method="POST">
         <div class="form-group">

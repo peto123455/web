@@ -9,7 +9,18 @@ exports.userPanel = (req, res) => {
     else res.redirect('/');
 }
 
-exports.profile = (req, res) => {
-    if(res.locals.user) res.render('profile');
-    else res.render('index');
+exports.profile = async (req, res, next) => {
+    try {
+        if(res.locals.user)
+        {
+            if(!req.query.id) return res.send("No id");
+
+            const puser = await User.findById(req.query.id);
+
+            res.render('profile', { "puser": puser });
+        }
+        else res.redirect('/login');
+    } catch(e) {
+        next(e);
+    }
 }

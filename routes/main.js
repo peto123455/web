@@ -35,14 +35,15 @@ router.route('/admin')
       .get(admin.dashboard);
 
 router.route('/admin/users')
-      .get(admin.users);
+      .get(admin.users)
+      .delete(admin.userDeletePost);
 
 router.route('/admin/useredit')
       .get(admin.userEdit)
       .post(admin.userEditPost);
 
 router.route('/admin/userdelete')
-      .get(admin.userDelete)
-      .post(admin.userDeletePost);
+      .get(admin.userDelete);
+      //.post(admin.userDeletePost);
 
 module.exports = router;

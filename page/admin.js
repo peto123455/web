@@ -1,5 +1,6 @@
 const User = require('./../models/User');
 const bcrypt = require('bcrypt');
+const Paginator = require('./../paginator')
 
 exports.dashboard = (req, res) => {
     if(res.locals.user && isAdmin(res.locals.user)) res.render('a_dashboard');
@@ -12,7 +13,10 @@ exports.users = async (req, res, next) => {
         {
             const users = await User.find({});
 
-            res.render('a_users', { "users": users });
+            const page = parseInt(req.query.page) || 1;
+            let paginator = new Paginator(users, page, 5);
+
+            res.render('a_users', { "users": paginator });
         }
         else res.redirect('/login');
     } catch(e) {
@@ -40,14 +44,12 @@ exports.userEditPost = async (req, res, next) => {
     try {
         if(res.locals.user && isAdmin(res.locals.user))
         {
-            const euser = await User.findById(req.body.id);
+            let update = {};
+            update["username"] = req.body["username"];
+            update["role"] = req.body["role"];
+            if(req.body.password) update["password"] = bcrypt.hashSync(req.body["password"], 5);
 
-            euser.username = req.body.username;
-            euser.role = req.body.role;
-
-            if(req.body.password) euser.password = bcrypt.hashSync(req.body.password, 5);
-
-            await euser.save();
+            await User.findOneAndUpdate({ "_id": req.body["id"] }, { $set: update });
 
             res.redirect('/admin/users');
         }
@@ -78,8 +80,8 @@ exports.userDeletePost = async (req, res, next) => {
         if(res.locals.user && isAdmin(res.locals.user))
         {
             await User.findByIdAndRemove(req.body.id);
-
-            res.redirect('/admin/users');
+            res.status(200).json({"status": "OK"});
+            //res.redirect('/admin/users');
         }
         else res.redirect('/login');
     } catch(e) {

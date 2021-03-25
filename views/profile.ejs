@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <%- include('_links') %>
-    <title>Index</title>
+    <title>SPM - Profile</title>
 </head>
 <body>
 <%- include('_navbarLogged') %>
@@ -17,10 +17,10 @@
               <div class="card">
                 <div class="card-body">
                   <div class="d-flex flex-column align-items-center text-center">
-                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
+                    <img src="https://bootdey.com/img/Content/avatar/avatar<%= puser.avatar %>.png" alt="Admin" class="rounded-circle" width="150">
                     <div class="mt-3">
-                      <h4><%= user.username %></h4>
-                      <p class="text-secondary mb-1"><%= roles[user.role] %></p>
+                      <h4><%= puser.username %></h4>
+                      <p class="text-secondary mb-1"><%= roles[puser.role] %></p>
                     </div>
                   </div>
                 </div>
@@ -58,7 +58,7 @@
                       <h6 class="mb-0">Username</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      <%= user.username %>
+                      <%= puser.username %>
                     </div>
                   </div>
                   <hr>
@@ -76,7 +76,7 @@
                       <h6 class="mb-0">Role</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      <%= roles[user.role] %>
+                      <%= roles[puser.role] %>
                     </div>
                   </div>
                 </div>

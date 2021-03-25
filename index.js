@@ -37,6 +37,7 @@ app.set('view engine', 'ejs');
 app.use(sessionMiddleware);
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(express.static('public'));
 
 app.use(function (err, req, res, next) {
     console.error(err.stack);
