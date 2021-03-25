@@ -10,6 +10,9 @@ const admin = require('../page/admin');
 router.route('/')
       .get(page.mainPage);
 
+router.route('/panel')
+      .get(page.userPanel);
+
 router.route('/profile')
       .get(page.profile);
 
@@ -18,7 +21,7 @@ router.route('/login')
       .post(passport.authenticate("local", {
             failureRedirect: "/login",
             failureFlash: true}), (req, res) => {
-                res.redirect('/');
+                res.redirect('/panel');
             });
 
 router.route('/register')
@@ -33,5 +36,13 @@ router.route('/admin')
 
 router.route('/admin/users')
       .get(admin.users);
+
+router.route('/admin/useredit')
+      .get(admin.userEdit)
+      .post(admin.userEditPost);
+
+router.route('/admin/userdelete')
+      .get(admin.userDelete)
+      .post(admin.userDeletePost);
 
 module.exports = router;

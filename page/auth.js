@@ -4,12 +4,12 @@ const bcrypt = require('bcrypt');
 
 
 exports.login = (req, res) => {
-    if(res.locals.user) res.redirect('/');
+    if(res.locals.user) res.redirect('/panel');
     else res.render('login');
 }
 
 exports.register = (req, res) => {
-    if(res.locals.user) res.redirect('/');
+    if(res.locals.user) res.redirect('/panel');
     else res.render('register');
 }
 

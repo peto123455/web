@@ -1,6 +1,12 @@
 exports.mainPage = (req, res) => {
-    if(res.locals.user) res.render('main');
-    else res.render('index');
+    if(res.locals.user) res.redirect('/panel');
+    else 
+    res.render('index');
+}
+
+exports.userPanel = (req, res) => {
+    if(res.locals.user) res.render('u_index');
+    else res.redirect('/');
 }
 
 exports.profile = (req, res) => {
