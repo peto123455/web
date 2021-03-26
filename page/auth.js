@@ -23,10 +23,12 @@ exports.registerPost = async (req, res, next) => {
             req.flash("error", "Username - 4 to 32 characters long.<br>Password - 6 to 32 characters long.");
         else if(!isValid(req.body.username) || !isValid(req.body.password)) 
             req.flash("error", "Incorrect characters !");
+        else if(!req.body.email)
+            req.flash("error", "Invalid email");
         else
         {
             const hash = await bcrypt.hash(req.body.password, 5);
-            const user = new User({ "username": req.body.username, "password": hash });
+            const user = new User({ "username": req.body.username, "password": hash, email: req.body.email });
             await user.save();
             req.flash("success", "Account successfully created ! You can now <a href=\"/login\">log in<\/a>");
         }

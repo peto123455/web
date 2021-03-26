@@ -1,4 +1,5 @@
 const bcrypt = require('bcrypt');
+const { render } = require('ejs');
 
 exports.mainPage = (req, res) => {
     if(res.locals.user) res.redirect('/panel');
@@ -15,11 +16,39 @@ exports.profile = async (req, res, next) => {
     try {
         if(res.locals.user)
         {
-            if(!req.query.id) return res.send("No id");
+            let puser;
 
-            const puser = await User.findById(req.query.id);
+            if(!req.query.id) puser = req.user;
+            else puser = await User.findById(req.query.id);
+
 
             res.render('profile', { "puser": puser });
+        }
+        else res.redirect('/login');
+    } catch(e) {
+        next(e);
+    }
+}
+
+exports.profileEdit = (req, res) => {
+    if(req.user)
+    {
+        res.render('u_profileedit');
+    }
+    else res.redirect('/login');
+}
+
+exports.profileEditPost = async (req, res, next) => {
+    try {
+        if(req.user)
+        {
+            let update = {};
+            update["avatar"] = req.body["avatar"];
+            update["email"] = req.body["email"];
+
+            await User.findOneAndUpdate({ "_id": req.user._id }, { $set: update });
+
+            res.redirect('/admin/users');
         }
         else res.redirect('/login');
     } catch(e) {

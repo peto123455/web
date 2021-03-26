@@ -14,6 +14,10 @@ const UserSchema = new mongoose.Schema(
     avatar: {
         type: Number,
         default: 7
+    },
+    email: {
+        type: String,
+        default: "Not set"
     }
   }
 );

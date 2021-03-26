@@ -9,6 +9,26 @@
 </head>
 <body>
 <%- include('_navbarLogged') %>
-<a href="/admin/users" class="btn btn-primary">Users</a>
+
+<div class="container" style="max-width: 800px;">
+    <h1 class="my-5" style="text-align: center;">Admin dashboard</h1>
+    <div class="d-flex flex-wrap justify-content-around mt-5">
+        <div class="card my-2" style="width: 18rem;">
+            <div class="card-body d-flex flex-column">
+                <h5 class="card-title">Manage users</h5>
+                <p class="card-text">Here you can edit or remove all users.</p>
+                <a href="/admin/users" class="btn btn-primary mt-auto">Manage</a>
+            </div>
+        </div>
+        <div class="card my-2" style="width: 18rem;">
+            <div class="card-body d-flex flex-column">
+                <h5 class="card-title">Coming soon...</h5>
+                <p class="card-text">We will see ...</p>
+                <a href="#" class="btn btn-primary mt-auto">Enter</a>
+            </div>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>

@@ -17,6 +17,10 @@ router.route('/profile')
       .get(page.profile)
       .put(page.passwordChange);
 
+router.route('/profile/edit')
+      .get(page.profileEdit)
+      .post(page.profileEditPost);
+
 router.route('/login')
       .get(auth.login)
       .post(passport.authenticate("local", {
