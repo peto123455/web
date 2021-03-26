@@ -99,7 +99,6 @@ $('#removeButton').on('click', (event) => {
 			id: $('#id').val()
 		},
 		success: function (data){
-			console.log("test");
 			$('#removeUser').modal('hide');
 			$("#" + $("#id").val()).fadeOut(300, function(){ $("#" + $("#id").val()).remove();});
 			window.location.reload();

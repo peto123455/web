@@ -14,7 +14,8 @@ router.route('/panel')
       .get(page.userPanel);
 
 router.route('/profile')
-      .get(page.profile);
+      .get(page.profile)
+      .put(page.passwordChange);
 
 router.route('/login')
       .get(auth.login)
