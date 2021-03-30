@@ -18,6 +18,10 @@ const UserSchema = new mongoose.Schema(
     email: {
         type: String,
         default: "Not set"
+    },
+    createdAt: {
+      type: Date,
+      default: Date.now
     }
   }
 );

@@ -27,9 +27,9 @@
         <div class="form-group">
           <label for="role">Role</label>
           <select id="role" name="role" class="form-select form-control" aria-label=".form-select-sm example">
-            <option value="1" <% if(euser.role==1){%>selected<%}%>>User</option>
-            <option value="2" <% if(euser.role==2){%>selected<%}%>>Moderator</option>
-            <option value="3" <% if(euser.role==3){%>selected<%}%>>Administrator</option>
+            <option value="1" <% if(euser.role==1){%>selected<%}%>><%= roles[1] %></option>
+            <option value="2" <% if(euser.role==2){%>selected<%}%>><%= roles[2] %></option>
+            <option value="3" <% if(euser.role==3){%>selected<%}%>><%= roles[3] %></option>
           </select>
         </div>
         <input type="submit" class="btn btn-success float-right" value="Save">

@@ -6,12 +6,24 @@ const passport = require('passport')
 const auth = require('../page/auth');
 const page = require('../page/page');
 const admin = require('../page/admin');
+const courses = require('../page/courses');
 
 router.route('/')
       .get(page.mainPage);
 
+router.route('/courses')
+      .get(courses.courses);
+
+router.route('/courses/create')
+      .get(courses.courseCreate)
+      .post(courses.courseCreatePost);
+
+router.route('/courses/detail')
+      .get(courses.detail)
+      .post(courses.enlist);
+
 router.route('/panel')
-      .get(page.userPanel);
+      .get(courses.userPanel);
 
 router.route('/profile')
       .get(page.profile)

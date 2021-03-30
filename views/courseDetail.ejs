@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/profile.css">
+    <%- include('_links') %>
+    <title>SPM - Profile</title>
+</head>
+<body>
+
+<%- include('_navbarLogged') %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card mt-4">
+        <img class="card-img-top img-fluid" src="https://seniordriving.aaa.com/wp-content/uploads/2016/07/take-local-defensive-driving-course.jpg" alt="">
+        <div class="card-body">
+          <h3 class="card-title"><%= course.name %></h3>
+          <h4><%= course.price %> €</h4>
+          <p class="card-text"><%= course.description %></p>
+          <form action="" method="POST">
+            <input type="text" name="id" value="<%= course._id %>" hidden>
+            <input type="submit" value="Enlist" class="btn btn-outline-success">
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
