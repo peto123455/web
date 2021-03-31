@@ -11,6 +11,9 @@ const courses = require('../page/courses');
 router.route('/')
       .get(page.mainPage);
 
+router.route('/course')
+      .get(courses.course);
+
 router.route('/courses')
       .get(courses.courses);
 
@@ -21,6 +24,10 @@ router.route('/courses/create')
 router.route('/courses/detail')
       .get(courses.detail)
       .post(courses.enlist);
+
+router.route('/courses/enlistments')
+      .get(courses.enlistments)
+      .delete(courses.removeCourseDelete);
 
 router.route('/panel')
       .get(courses.userPanel);

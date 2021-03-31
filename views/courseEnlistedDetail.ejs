@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/profile.css">
+    <%- include('_links') %>
+    <title>SPM - Profile</title>
+</head>
+<body>
+
+<%- include('_navbarLogged') %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card mt-4">
+        <img class="card-img-top img-fluid" src="https://seniordriving.aaa.com/wp-content/uploads/2016/07/take-local-defensive-driving-course.jpg" alt="">
+        <div class="card-body">
+          <h3 class="card-title"><%= course.course.name %></h3>
+          <h4><%= course.course.price %> €</h4>
+          <p class="card-text"><%= course.course.description %></p>
+					<span class="font-weight-bold">Theories attended:</span><span> <%= course.theories %> / <%= course.course.totalTheories %> </span><br />
+					<span class="font-weight-bold">Rides driven:</span><span> <%= course.drives %> / <%= course.course.totalRides %> </span><br />
+					<span class="font-weight-bold">Status:</span><span> <%= statuses[course.status] %></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

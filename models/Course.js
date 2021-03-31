@@ -14,7 +14,14 @@ const CourseSchema = new mongoose.Schema(
       type: Number,
       default: 0
     },
-    drivesRemaining: Number
+    drives: {  
+      type: Number,
+      default: 0
+    },
+    theories: {  
+      type: Number,
+      default: 0
+    }
   }
 );
 

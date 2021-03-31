@@ -21,14 +21,36 @@
           <h3 class="card-title"><%= course.name %></h3>
           <h4><%= course.price %> €</h4>
           <p class="card-text"><%= course.description %></p>
-          <form action="" method="POST">
-            <input type="text" name="id" value="<%= course._id %>" hidden>
-            <input type="submit" value="Enlist" class="btn btn-outline-success">
-          </form>
+          <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#enlistModal">Enlist</button>
+          <% if(user.role >= 2) { %><a href="/courses/enlistments?id=<%= course._id %>" class="btn btn-outline-info">View enlistments</a><% } %>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+<div class="modal fade" id="enlistModal" tabindex="-1" role="dialog" aria-labelledby="enlistModal" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Course enlistment</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <span>Are you sure you want to enlist ?</span>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <form action="" method="POST">
+          <input type="text" name="id" value="<%= course._id %>" hidden>
+          <input type="submit" value="Enlist" class="btn btn-success">
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>

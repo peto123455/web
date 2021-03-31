@@ -11,6 +11,10 @@ const CourseTypeSchema = new mongoose.Schema(
       type: Number,
       default: 30
     },
+    totalTheories: {
+      type: Number,
+      default: 25
+    },
     price: {
       type: Number,
       default: 600
