@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include('_links') %>
+    <title>SPM - User edit</title>
+</head>
+<body>
+<%- include('_navbarLogged') %>
+<div class="container pt-5" style="max-width: 500px;">
+    <h1><%= enlistee.username %></h1>
+    <form action="" method="POST">
+        <div class="form-group">
+            <label for="id">ID</label>
+            <input type="text" id="id" name="id" class="form-control" value="<%= enlisteeCourse._id %>" readonly required>
+        </div>
+        <div class="form-group">
+            <label for="theories">Theories attended</label>
+            <input type="text" id="theories" name="theories" class="form-control" value="<%= enlisteeCourse.theories %>" required>
+        </div>
+        <div class="form-group">
+            <label for="drives">Rides driven</label>
+            <input type="text" id="drives" name="drives" class="form-control" value="<%= enlisteeCourse.drives %>" required>
+        </div>
+        <div class="form-group">
+          <label for="status">Status</label>
+          <select id="status" name="status" class="form-select form-control" aria-label=".form-select-sm example">
+            <option value="0" <% if(enlisteeCourse.status == 0){%>selected<%}%>><%= statuses[0] %></option>
+            <option value="1" <% if(enlisteeCourse.status == 1){%>selected<%}%>><%= statuses[1] %></option>
+            <option value="2" <% if(enlisteeCourse.status == 2){%>selected<%}%>><%= statuses[2] %></option>
+          </select>
+        </div>
+        <input type="submit" class="btn btn-success float-right" value="Save">
+        <a href="/" class="btn btn-primary float-right mr-2">Cancel</a>
+    </form>
+</div>
+</body>
+</html>

@@ -29,6 +29,10 @@ router.route('/courses/enlistments')
       .get(courses.enlistments)
       .delete(courses.removeCourseDelete);
 
+router.route('/courses/enlisteeEdit')
+      .get(courses.enlisteeEdit)
+      .post(courses.enlisteeEditPost);
+
 router.route('/panel')
       .get(courses.userPanel);
 
